@@ -10,50 +10,57 @@ import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 const SLIDES = [
   {
     number: "01",
+    image: "/images/hero/hero-01.jpg",
     title: "호수공원을 품은\n대한민국 대표 쇼핑테마도시",
     sub: PROJECT.name,
     desc: "6만 3천여 세대 배후의 초거대 상권을 선점하라",
   },
   {
     number: "02",
+    image: "/images/hero/hero-02.jpg",
     title: "이색적인 호수의 낭만\n수변 라이프몰",
     sub: "Lake Side Mall",
     desc: "3만 3천평 중산호수공원을 품은 대구·경북 유일의 수변 문화복합몰",
   },
   {
     number: "03",
-    title: "사랑의 도시, 베로나\n스토리가 있는 상가",
-    sub: "Verona Concept",
-    desc: "로미오와 줄리엣의 배경 도시, 이탈리아 베로나를 모티브로 한 상환경",
+    image: "/images/hero/hero-03.jpg",
+    title: "경산의 새로운\n랜드마크 복합단지",
+    sub: "Pentahills W Square",
+    desc: "지하 6층 ~ 지상 59층, 18개동 3,443세대 대규모 주상복합",
   },
 ];
 
-const SLIDE_DURATION = 8000;
+const SLIDE_DURATION = 7000;
 
 export default function HeroSection() {
   const scrollTo = useSmoothScroll();
   const [selected, setSelected] = useState(0);
 
   useEffect(() => {
+    if (SLIDES.length <= 1) return;
     const id = setInterval(() => {
       setSelected((prev) => (prev + 1) % SLIDES.length);
     }, SLIDE_DURATION);
     return () => clearInterval(id);
   }, []);
 
+  const multi = SLIDES.length > 1;
+
   return (
     <section id="hero" className="relative h-[100svh] bg-black overflow-hidden text-[15px]">
-      {/* Background video */}
-      <video
-        src={getImagePath("/videos/intro.mp4")}
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 h-full w-full object-cover"
-      />
+      {/* Background image carousel — CSS cross-fade (robust, no rAF dependency) */}
+      {SLIDES.map((slide, i) => (
+        <img
+          key={i}
+          src={getImagePath(slide.image)}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover transition-opacity duration-[1200ms] ease-in-out"
+          style={{ opacity: selected === i ? 1 : 0 }}
+        />
+      ))}
       {/* Dark overlay for text legibility */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/70" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/25 to-black/65" />
 
       {/* Content */}
       <div className="absolute inset-0 z-10 flex items-end pb-36 md:items-center md:pb-0">
@@ -130,49 +137,53 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Bottom progress */}
-      <div className="absolute bottom-0 left-0 right-0 z-20">
-        <div className="flex">
+      {/* Bottom progress — only with multiple slides */}
+      {multi && (
+        <div className="absolute bottom-0 left-0 right-0 z-20">
+          <div className="flex">
+            {SLIDES.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setSelected(i)}
+                className="group relative flex-1 py-6"
+              >
+                <div className="h-px w-full bg-white/5">
+                  <motion.div
+                    key={`${i}-${selected}`}
+                    className="h-full bg-accent-light"
+                    initial={{ width: "0%" }}
+                    animate={{ width: selected === i ? "100%" : "0%" }}
+                    transition={{ duration: selected === i ? SLIDE_DURATION / 1000 : 0.3, ease: "linear" }}
+                  />
+                </div>
+                <span className={cn(
+                  "absolute bottom-1.5 left-0 text-[9px] font-light tracking-wider transition",
+                  selected === i ? "text-white/80" : "text-white/50"
+                )}>
+                  0{i + 1}
+                </span>
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Side indicators — only with multiple slides */}
+      {multi && (
+        <div className="absolute right-6 top-1/2 z-20 hidden -translate-y-1/2 flex-col items-center gap-3 md:flex md:right-10">
           {SLIDES.map((_, i) => (
             <button
               key={i}
               onClick={() => setSelected(i)}
-              className="group relative flex-1 py-6"
-            >
-              <div className="h-px w-full bg-white/5">
-                <motion.div
-                  key={`${i}-${selected}`}
-                  className="h-full bg-accent-light"
-                  initial={{ width: "0%" }}
-                  animate={{ width: selected === i ? "100%" : "0%" }}
-                  transition={{ duration: selected === i ? SLIDE_DURATION / 1000 : 0.3, ease: "linear" }}
-                />
-              </div>
-              <span className={cn(
-                "absolute bottom-1.5 left-0 text-[9px] font-light tracking-wider transition",
-                selected === i ? "text-white/80" : "text-white/50"
-              )}>
-                0{i + 1}
-              </span>
-            </button>
+              className={cn(
+                "transition-all duration-500",
+                selected === i ? "h-12 w-px bg-white/60" : "h-6 w-px bg-white/20 hover:bg-white/20"
+              )}
+              aria-label={`슬라이드 ${i + 1}`}
+            />
           ))}
         </div>
-      </div>
-
-      {/* Side indicators */}
-      <div className="absolute right-6 top-1/2 z-20 hidden -translate-y-1/2 flex-col items-center gap-3 md:flex md:right-10">
-        {SLIDES.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setSelected(i)}
-            className={cn(
-              "transition-all duration-500",
-              selected === i ? "h-12 w-px bg-white/60" : "h-6 w-px bg-white/20 hover:bg-white/20"
-            )}
-            aria-label={`슬라이드 ${i + 1}`}
-          />
-        ))}
-      </div>
+      )}
 
       {/* Scroll down */}
       <motion.button
