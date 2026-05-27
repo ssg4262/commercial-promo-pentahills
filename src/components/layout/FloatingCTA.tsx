@@ -24,14 +24,14 @@ export default function FloatingCTA() {
           >
             <a
               href={`tel:${PROJECT.phone}`}
-              className="flex items-center gap-2 bg-cta-phone px-6 py-3.5 text-[12px] font-semibold tracking-[0.08em] text-white shadow-2xl transition hover:bg-cta-phone-dark rounded"
+              className="flex items-center gap-2 bg-[#B5423A] px-6 py-3.5 text-[12px] font-semibold tracking-[0.08em] text-white shadow-2xl transition hover:bg-[#9A3730] rounded"
             >
               <Phone size={14} strokeWidth={2} />
               전화상담
             </a>
             <button
               onClick={() => scrollTo("registration")}
-              className="flex items-center gap-2 bg-accent px-6 py-3.5 text-[12px] font-semibold tracking-[0.08em] text-white shadow-2xl transition hover:bg-accent-dark rounded"
+              className="flex items-center gap-2 bg-[#B87348] px-6 py-3.5 text-[12px] font-semibold tracking-[0.08em] text-white shadow-2xl transition hover:bg-[#9A5F3A] rounded"
             >
               관심고객
               <ArrowRight size={13} strokeWidth={1.5} />
@@ -51,14 +51,14 @@ export default function FloatingCTA() {
           >
             <a
               href={`tel:${PROJECT.phone}`}
-              className="flex flex-1 items-center justify-center gap-2 bg-cta-phone py-4 text-xs font-semibold text-white transition active:bg-cta-phone-dark"
+              className="flex flex-1 items-center justify-center gap-2 bg-[#B5423A] py-4 text-xs font-semibold text-white transition active:bg-[#9A3730]"
             >
               <Phone size={15} strokeWidth={2} />
               전화상담
             </a>
             <button
               onClick={() => scrollTo("registration")}
-              className="flex flex-1 items-center justify-center gap-2 bg-accent py-4 text-xs font-semibold text-white transition active:bg-accent-dark"
+              className="flex flex-1 items-center justify-center gap-2 bg-[#B87348] py-4 text-xs font-semibold text-white transition active:bg-[#9A5F3A]"
             >
               관심고객 등록
               <ArrowRight size={14} strokeWidth={1.5} />
