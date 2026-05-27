@@ -1,7 +1,6 @@
 "use client";
 
-import Image from "next/image";
-import { cn } from "@/lib/utils";
+import { cn, getImagePath } from "@/lib/utils";
 
 interface LogoProps {
   className?: string;
@@ -10,24 +9,21 @@ interface LogoProps {
 }
 
 const SIZES = {
-  sm: { h: 28, w: 97 },
-  md: { h: 36, w: 125 },
-  lg: { h: 56, w: 195 },
+  sm: 28,
+  md: 36,
+  lg: 56,
 };
 
 export default function Logo({ className, size = "sm" }: LogoProps) {
-  const { h, w } = SIZES[size];
+  const h = SIZES[size];
 
   return (
     <div className={cn("flex items-center", className)}>
-      <Image
-        src="/images/logo/logo-horizontal.png"
+      <img
+        src={getImagePath("/images/logo/logo-horizontal.png")}
         alt="펜타힐즈 더블유 스퀘어"
-        width={w}
-        height={h}
-        priority
-        className="object-contain"
-        style={{ height: h, width: "auto" }}
+        className="block w-auto object-contain"
+        style={{ height: h }}
       />
     </div>
   );
