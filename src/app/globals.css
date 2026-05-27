@@ -6,11 +6,13 @@
   --color-primary: #111111;
   --color-primary-light: #1a1a1a;
   --color-primary-dark: #000000;
-  --color-accent: #B87348;
-  --color-accent-light: #C9885E;
-  --color-accent-dark: #9A5F3A;
-  --color-cta-phone: #B5423A;
-  --color-cta-phone-dark: #9A3730;
+  /* 펜타힐즈 W스퀘어 시그니처 — 에메랄드 그린 (로고에서 추출) */
+  --color-accent: #019775;
+  --color-accent-light: #2BB293;
+  --color-accent-dark: #016B53;
+  --color-cta-phone: #0A4A3A;
+  --color-cta-phone-dark: #073429;
+  --color-leaf: #6CBE4C;
   --color-surface: #f7f7f7;
   --color-surface-dark: #111111;
   --color-muted: #666666;
@@ -81,3 +83,50 @@ body {
 /* Hide scrollbar but keep scrollable */
 .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 .scrollbar-hide::-webkit-scrollbar { display: none; }
+
+/* ── High-quality motion ───────────────────────────────── */
+
+/* Hero Ken Burns — slow cinematic zoom (CSS, robust regardless of JS) */
+@keyframes kenburns {
+  from { transform: scale(1.02); }
+  to   { transform: scale(1.12); }
+}
+.hero-kenburns {
+  animation: kenburns 18s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+/* Premium CTA micro-interaction */
+.cta-btn {
+  position: relative;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.3s ease;
+}
+.cta-btn:hover { transform: translateY(-3px); }
+.cta-btn:active { transform: translateY(-1px); }
+
+/* Subtle shine sweep on hover (for primary buttons) */
+.cta-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.18) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+}
+.cta-btn:hover::after { transform: translateX(120%); }
+
+/* Animated accent underline for section eyebrows */
+@keyframes lineGrow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* Reduced-motion safety */
+@media (prefers-reduced-motion: reduce) {
+  .hero-kenburns { animation: none; }
+  .cta-btn:hover { transform: none; }
+  html { scroll-behavior: auto; }
+}

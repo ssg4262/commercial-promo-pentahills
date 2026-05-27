@@ -55,7 +55,7 @@ export default function HeroSection() {
           key={i}
           src={getImagePath(slide.image)}
           alt=""
-          className="absolute inset-0 h-full w-full object-cover transition-opacity duration-[1200ms] ease-in-out"
+          className="hero-kenburns absolute inset-0 h-full w-full object-cover transition-opacity duration-[1200ms] ease-in-out"
           style={{ opacity: selected === i ? 1 : 0 }}
         />
       ))}
@@ -119,13 +119,13 @@ export default function HeroSection() {
                 >
                   <button
                     onClick={() => scrollTo("registration")}
-                    className="bg-accent px-8 py-4 text-[13px] font-medium uppercase tracking-[0.15em] text-white transition-all hover:bg-accent-dark"
+                    className="cta-btn overflow-hidden bg-accent px-8 py-4 text-[13px] font-medium uppercase tracking-[0.15em] text-white shadow-lg shadow-accent/30 hover:bg-accent-dark"
                   >
                     관심고객 등록
                   </button>
                   <a
                     href={`tel:${PROJECT.phone}`}
-                    className="flex items-center gap-2 bg-cta-phone px-8 py-4 text-sm font-semibold tracking-[0.12em] text-white shadow-lg shadow-cta-phone/30 transition-all hover:bg-cta-phone-dark"
+                    className="cta-btn flex items-center gap-2 overflow-hidden bg-cta-phone px-8 py-4 text-sm font-semibold tracking-[0.12em] text-white shadow-lg shadow-cta-phone/30 hover:bg-cta-phone-dark"
                   >
                     <Phone size={14} strokeWidth={2} />
                     {PROJECT.phone}
