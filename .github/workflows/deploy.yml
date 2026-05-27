@@ -27,9 +27,10 @@ jobs:
       - run: npm ci
       - name: Build
         run: npm run build
-        # 프로젝트 리포(ssg4262.github.io/commercial-promo-pentahills/)로 배포 →
-        # basePath 적용 위해 CUSTOM_DOMAIN 설정하지 않음.
-        # 커스텀 도메인 사용 시 아래 두 env를 "true"로.
+        # 커스텀 도메인(pentahillsw.kr)으로 배포 → 루트 서빙이므로 basePath 없음.
+        env:
+          CUSTOM_DOMAIN: "true"
+          NEXT_PUBLIC_CUSTOM_DOMAIN: "true"
 
       - uses: actions/upload-pages-artifact@v3
         with:
