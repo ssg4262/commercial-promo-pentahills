@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { cn, getImagePath } from "@/lib/utils";
 import RevealOnScroll from "@/components/common/RevealOnScroll";
 
@@ -20,6 +21,29 @@ export default function VideoSection({
   poster,
   dark = false,
 }: VideoSectionProps) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    // React가 muted 속성을 DOM에 못 붙이는 버그 보완 → 자동재생 허용
+    v.muted = true;
+    v.defaultMuted = true;
+
+    const tryPlay = () => v.play().catch(() => {});
+    // 화면에 보일 때 재생, 벗어나면 일시정지 (대역폭 절약 + 자동재생 트리거)
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) tryPlay();
+        else v.pause();
+      },
+      { threshold: 0.25 }
+    );
+    io.observe(v);
+    tryPlay();
+    return () => io.disconnect();
+  }, []);
+
   return (
     <section
       id={id}
@@ -55,6 +79,7 @@ export default function VideoSection({
       {/* Full-width video — edge-to-edge on mobile */}
       <div className="pb-10 md:mx-auto md:max-w-6xl md:section-padding">
         <video
+          ref={videoRef}
           src={getImagePath(src)}
           poster={poster ? getImagePath(poster) : undefined}
           autoPlay
