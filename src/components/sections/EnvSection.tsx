@@ -9,7 +9,6 @@ import RevealOnScroll from "@/components/common/RevealOnScroll";
 import ImageZoomModal from "@/components/common/ImageZoomModal";
 
 const TABS: { id: string; label: string; image: string }[] = [
-  { id: "compact",  label: "초거대 배후도시", image: "/images/location/loc-compact.png" },
   { id: "infra",    label: "생활중심 인프라", image: "/images/location/loc-infra.png" },
   { id: "traffic",  label: "교통 입지",       image: "/images/location/loc-traffic.png" },
   { id: "lakepark", label: "중산호수공원",    image: "/images/location/loc-lakepark.png" },

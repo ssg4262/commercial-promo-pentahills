@@ -4,6 +4,7 @@ import { ArrowUp, Phone, MapPin } from "lucide-react";
 import { PROJECT } from "@/data/project";
 import { NAV_ITEMS } from "@/data/navigation";
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
+import { getImagePath } from "@/lib/utils";
 
 export default function Footer() {
   const scrollTo = useSmoothScroll();
@@ -12,10 +13,11 @@ export default function Footer() {
     <footer className="bg-[#0a0a0a] text-white">
       {/* Top bar */}
       <div className="flex items-center justify-between border-b border-neutral-800 px-6 py-4 md:px-10">
-        <span className="flex flex-col items-center leading-none">
-          <span className="text-[8px] font-medium tracking-[0.25em] text-[#c4835a]">HOBAN</span>
-          <span className="text-[13px] font-extrabold tracking-[0.02em] text-white">SUMMIT</span>
-        </span>
+        <img
+          src={getImagePath("/images/logo/logo-horizontal.png")}
+          alt="펜타힐즈 더블유 스퀘어"
+          className="block h-7 w-auto"
+        />
         <button
           onClick={() => scrollTo("hero")}
           className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-neutral-400 transition hover:text-white"

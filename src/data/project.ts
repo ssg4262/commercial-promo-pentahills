@@ -3,7 +3,7 @@ import type { ProjectInfo } from "@/types";
 export const PROJECT: ProjectInfo = {
   name: "펜타힐즈 W스퀘어",
   location: "경상북도 경산시 중산동 일원 A2-1 블록",
-  showroom: "추후 안내 예정",
+  showroom: "대구광역시 수성구 만촌동 737-3",
   developer: "아이에스동서(주)",
   totalUnits: 3443,
   totalBuildings: 18,
@@ -36,6 +36,7 @@ export const PROJECT_OVERVIEW_TABLE = [
   { label: "착공 / 준공", value: "2026년 5월 ~ 2030년 10월 (예정)" },
   { label: "타입 (APT)", value: "84㎡ 846세대, 105/115㎡ 1,034세대, 123~137㎡ 1,335세대, 152㎡ 228세대" },
   { label: "시행·시공사", value: "아이에스동서(주)" },
+  { label: "홍보관", value: "대구광역시 수성구 만촌동 737-3" },
 ] as const;
 
 export const COMMERCIAL_OVERVIEW_TABLE = [

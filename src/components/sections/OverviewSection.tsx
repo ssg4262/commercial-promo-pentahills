@@ -15,6 +15,8 @@ export default function OverviewSection() {
   const fmtArea = (val: number) =>
     unitMode === "pyeong" ? `${convertToPyeong(val)}평` : `${val}㎡`;
 
+  const totalUnits = UNIT_TYPES.reduce((sum, u) => sum + u.unitCount, 0);
+
   return (
     <SectionWrapper id="overview" title="사업개요" subtitle="Overview">
       {/* Stats - minimal horizontal layout */}
@@ -123,7 +125,7 @@ export default function OverviewSection() {
                       <td className="py-3.5 text-right text-neutral-500">{fmtArea(unit.supplyArea)}</td>
                       <td className="py-3.5 text-right font-medium">{unit.unitCount}세대</td>
                       <td className="py-3.5 text-right text-neutral-400">
-                        {((unit.unitCount / 1004) * 100).toFixed(2)}%
+                        {((unit.unitCount / totalUnits) * 100).toFixed(2)}%
                       </td>
                     </tr>
                   ))}
@@ -131,7 +133,7 @@ export default function OverviewSection() {
                     <td className="py-3.5">계</td>
                     <td className="py-3.5 text-right">-</td>
                     <td className="py-3.5 text-right">-</td>
-                    <td className="py-3.5 text-right">1,004세대</td>
+                    <td className="py-3.5 text-right">{totalUnits.toLocaleString()}세대</td>
                     <td className="py-3.5 text-right">100%</td>
                   </tr>
                 </tbody>
