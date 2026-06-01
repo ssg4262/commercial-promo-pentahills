@@ -21,7 +21,6 @@ const SLIDES = [
     title: "이색적인 호수의 낭만\n수변 라이프몰",
     sub: "Lake Side Mall",
     desc: "3만 3천평 중산호수공원을 품은 대구·경북 유일의 수변 문화복합몰",
-    titleClass: "text-[clamp(1.7rem,4.4vw,4rem)]",
   },
   {
     number: "03",
@@ -32,7 +31,7 @@ const SLIDES = [
   },
 ];
 
-const DEFAULT_TITLE_CLASS = "text-[clamp(2rem,5.4vw,5rem)]";
+const DEFAULT_TITLE_CLASS = "text-[clamp(1.7rem,4.4vw,4rem)]";
 
 const SLIDE_DURATION = 7000;
 
