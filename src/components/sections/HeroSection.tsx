@@ -7,7 +7,17 @@ import { cn, getImagePath } from "@/lib/utils";
 import { PROJECT } from "@/data/project";
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 
-const SLIDES = [
+interface HeroSlide {
+  number: string;
+  image: string;
+  title: string;
+  sub: string;
+  desc: string;
+  /** Optional per-slide title size override (Tailwind class) */
+  titleClass?: string;
+}
+
+const SLIDES: HeroSlide[] = [
   {
     number: "01",
     image: "/images/hero/hero-01.jpg",
