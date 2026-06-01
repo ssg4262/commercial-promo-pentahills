@@ -61,8 +61,8 @@ export default function HeroSection() {
           style={{ opacity: selected === i ? 1 : 0 }}
         />
       ))}
-      {/* Dark overlay — light at top, slightly darker at bottom for text legibility */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/18 via-black/18 to-black/48" />
+      {/* Dark overlay — light at top, darker at bottom for text legibility */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/65" />
 
       {/* Content */}
       <div className="absolute inset-0 z-10 flex items-end pb-36 md:items-center md:pb-0">
@@ -83,11 +83,11 @@ export default function HeroSection() {
                   transition={{ delay: 0.1 }}
                   className="mb-8 flex items-center gap-6"
                 >
-                  <span className="text-[10px] font-light tracking-[0.3em] text-white/60">
+                  <span className="text-[11px] font-medium tracking-[0.3em] text-white/85">
                     {SLIDES[selected].number}
                   </span>
-                  <div className="h-px w-16 bg-white/20" />
-                  <span className="text-[10px] font-light tracking-[0.2em] text-white/60 uppercase">
+                  <div className="h-px w-16 bg-white/40" />
+                  <span className="text-[11px] font-medium tracking-[0.2em] text-white/85 uppercase">
                     {SLIDES[selected].sub}
                   </span>
                 </motion.div>
@@ -110,7 +110,7 @@ export default function HeroSection() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.35 }}
-                  className="mb-12 max-w-md text-sm font-light leading-relaxed text-white/70 md:text-base"
+                  className="mb-12 max-w-md text-sm font-normal leading-relaxed text-white/95 md:text-base"
                 >
                   {SLIDES[selected].desc}
                 </motion.p>
