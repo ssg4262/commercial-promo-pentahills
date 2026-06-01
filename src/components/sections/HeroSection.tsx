@@ -21,6 +21,7 @@ const SLIDES = [
     title: "이색적인 호수의 낭만\n수변 라이프몰",
     sub: "Lake Side Mall",
     desc: "3만 3천평 중산호수공원을 품은 대구·경북 유일의 수변 문화복합몰",
+    titleClass: "text-[clamp(2rem,5.2vw,4.8rem)]",
   },
   {
     number: "03",
@@ -30,6 +31,8 @@ const SLIDES = [
     desc: "지하 6층 ~ 지상 59층, 18개동 3,443세대 대규모 주상복합",
   },
 ];
+
+const DEFAULT_TITLE_CLASS = "text-[clamp(2.4rem,6.5vw,6rem)]";
 
 const SLIDE_DURATION = 7000;
 
@@ -59,8 +62,8 @@ export default function HeroSection() {
           style={{ opacity: selected === i ? 1 : 0 }}
         />
       ))}
-      {/* Dark overlay for text legibility */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/25 to-black/65" />
+      {/* Dark overlay — light at top, slightly darker at bottom for text legibility */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/18 via-black/18 to-black/48" />
 
       {/* Content */}
       <div className="absolute inset-0 z-10 flex items-end pb-36 md:items-center md:pb-0">
@@ -95,7 +98,10 @@ export default function HeroSection() {
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.15, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                  className="heading-display mb-8 whitespace-pre-line text-white text-[clamp(2.4rem,6.5vw,6rem)]"
+                  className={cn(
+                    "heading-display mb-8 whitespace-pre-line text-white",
+                    SLIDES[selected].titleClass ?? DEFAULT_TITLE_CLASS
+                  )}
                 >
                   {SLIDES[selected].title}
                 </motion.h1>
