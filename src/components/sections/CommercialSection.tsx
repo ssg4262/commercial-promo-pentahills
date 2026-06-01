@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Maximize2, ChevronLeft, ChevronRight } from "lucide-react";
+import { Maximize2, ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react";
+import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 import { cn, getImagePath } from "@/lib/utils";
 import { COMMERCIAL_OVERVIEW_TABLE } from "@/data/project";
 import { COMMERCIAL_CATEGORIES } from "@/data/commercial-tabs";
@@ -15,6 +16,7 @@ export default function CommercialSection() {
   const [activeCat, setActiveCat] = useState(COMMERCIAL_CATEGORIES[0].id);
   const [activeTab, setActiveTab] = useState(COMMERCIAL_CATEGORIES[0].tabs[0].id);
   const [modalOpen, setModalOpen] = useState(false);
+  const scrollTo = useSmoothScroll();
 
   const activeCategory =
     COMMERCIAL_CATEGORIES.find((c) => c.id === activeCat) ?? COMMERCIAL_CATEGORIES[0];
@@ -80,7 +82,21 @@ export default function CommercialSection() {
       title="상가분양"
       subtitle="W Square Commercial"
       kicker="FEATURED · 핵심 분양"
-      titleClassName="text-[#B5423A] dark:text-[#D8A097]"
+      action={
+        <button
+          onClick={() => scrollTo("registration")}
+          className="group inline-flex items-center gap-2 text-sm font-semibold text-highlight transition-colors hover:text-highlight-dark"
+        >
+          <span className="border-b border-highlight/40 pb-0.5 transition-colors group-hover:border-highlight">
+            관심고객 등록 바로가기
+          </span>
+          <ArrowUpRight
+            size={16}
+            strokeWidth={2}
+            className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+          />
+        </button>
+      }
     >
       {/* Primary category tabs */}
       <RevealOnScroll>

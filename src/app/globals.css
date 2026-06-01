@@ -17,6 +17,9 @@
   --color-highlight: #B5423A;
   --color-highlight-dark: #963328;
   --color-highlight-light: #D8A097;
+  /* 관심고객 등록 CTA — 테라코타 따뜻한 톤 */
+  --color-cta-register: #B87348;
+  --color-cta-register-dark: #9A5F3A;
   --color-surface: #f7f7f7;
   --color-surface-dark: #111111;
   --color-muted: #666666;

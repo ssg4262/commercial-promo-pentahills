@@ -11,6 +11,8 @@ interface SectionWrapperProps {
   subtitle?: string;
   /** Editorial section marker shown above the subtitle (e.g. "FEATURED · 핵심") */
   kicker?: string;
+  /** Optional action element rendered to the right of the title on md+ (e.g. shortcut CTA) */
+  action?: ReactNode;
   titleClassName?: string;
   dark?: boolean;
 }
@@ -22,6 +24,7 @@ export default function SectionWrapper({
   title,
   subtitle,
   kicker,
+  action,
   titleClassName,
   dark = false,
 }: SectionWrapperProps) {
@@ -52,10 +55,15 @@ export default function SectionWrapper({
                 {subtitle}
               </span>
             )}
-            {title && (
-              <h2 className={cn("heading-display text-[35px] md:text-[45px] lg:text-[57px]", dark ? "text-white" : "text-neutral-900 dark:text-white", titleClassName)}>
-                {title}
-              </h2>
+            {(title || action) && (
+              <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between md:gap-8">
+                {title && (
+                  <h2 className={cn("heading-display text-[35px] md:text-[45px] lg:text-[57px]", dark ? "text-white" : "text-neutral-900 dark:text-white", titleClassName)}>
+                    {title}
+                  </h2>
+                )}
+                {action && <div className="md:pb-2">{action}</div>}
+              </div>
             )}
             <div className="mt-6 h-px w-12 bg-accent" />
           </div>
