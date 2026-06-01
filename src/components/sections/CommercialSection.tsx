@@ -3,34 +3,13 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Maximize2, ChevronLeft, ChevronRight } from "lucide-react";
-import {
-  Users,
-  Waves,
-  Store,
-  Landmark,
-  PartyPopper,
-  ShieldCheck,
-  Handshake,
-} from "lucide-react";
 import { cn, getImagePath } from "@/lib/utils";
 import { COMMERCIAL_OVERVIEW_TABLE } from "@/data/project";
-import { PREMIUM_ITEMS } from "@/data/premium";
-import { MD_ZONES } from "@/data/zoning";
 import { COMMERCIAL_CATEGORIES } from "@/data/commercial-tabs";
 import { useDragScroll } from "@/hooks/useDragScroll";
 import SectionWrapper from "./SectionWrapper";
 import RevealOnScroll from "@/components/common/RevealOnScroll";
 import ImageZoomModal from "@/components/common/ImageZoomModal";
-
-const ICON_MAP: Record<string, React.ElementType> = {
-  Users,
-  Waves,
-  Store,
-  Landmark,
-  PartyPopper,
-  ShieldCheck,
-  Handshake,
-};
 
 export default function CommercialSection() {
   const [activeCat, setActiveCat] = useState(COMMERCIAL_CATEGORIES[0].id);
@@ -96,7 +75,13 @@ export default function CommercialSection() {
   }, [activeCat]);
 
   return (
-    <SectionWrapper id="commercial" title="상가분양" subtitle="W Square Commercial">
+    <SectionWrapper
+      id="commercial"
+      title="상가분양"
+      subtitle="W Square Commercial"
+      kicker="FEATURED · 핵심 분양"
+      titleClassName="text-[#B5423A] dark:text-[#D8A097]"
+    >
       {/* Primary category tabs */}
       <RevealOnScroll>
         <div className="mb-4 flex flex-wrap gap-2">
@@ -269,101 +254,6 @@ export default function CommercialSection() {
         </div>
       </RevealOnScroll>
 
-      {/* 7 VALUE */}
-      <div className="mb-16 md:mb-24">
-        <RevealOnScroll>
-          <div className="mb-8 flex items-end justify-between gap-6">
-            <h4 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-neutral-400">
-              W Square 7 Value
-            </h4>
-            <p className="text-xs text-neutral-500 dark:text-neutral-400">
-              더블유 스퀘어가 품고 있는 완벽한 가치
-            </p>
-          </div>
-        </RevealOnScroll>
-        <div className="grid grid-cols-1 gap-px bg-neutral-200 sm:grid-cols-2 lg:grid-cols-4 dark:bg-neutral-800">
-          {PREMIUM_ITEMS.map((item, i) => {
-            const Icon = ICON_MAP[item.icon];
-            return (
-              <RevealOnScroll key={item.id} delay={i * 0.05}>
-                <div className="group h-full bg-white p-7 transition-colors hover:bg-neutral-50 dark:bg-[#0a0a0a] dark:hover:bg-neutral-900/80">
-                  <div className="mb-5 flex items-center gap-3">
-                    <div className="flex h-9 w-9 items-center justify-center border border-neutral-200 transition-colors group-hover:border-accent dark:border-neutral-700">
-                      {Icon && (
-                        <Icon
-                          size={16}
-                          strokeWidth={1.5}
-                          className="text-accent transition group-hover:text-accent-dark"
-                        />
-                      )}
-                    </div>
-                    <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-neutral-400">
-                      Value 0{i + 1}
-                    </span>
-                  </div>
-                  <h5 className="mb-2 text-sm font-semibold tracking-tight text-neutral-900 dark:text-white">
-                    {item.title}
-                  </h5>
-                  <p className="text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">
-                    {item.description}
-                  </p>
-                </div>
-              </RevealOnScroll>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* MD Zoning */}
-      <div>
-        <RevealOnScroll>
-          <div className="mb-8 flex items-end justify-between gap-6">
-            <h4 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-neutral-400">
-              MD Zoning
-            </h4>
-            <p className="text-xs text-neutral-500 dark:text-neutral-400">
-              이탈리아 베로나 모티브의 4개 테마 존
-            </p>
-          </div>
-        </RevealOnScroll>
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          {MD_ZONES.map((zone, i) => (
-            <RevealOnScroll key={zone.id} delay={i * 0.08}>
-              <div className="group h-full border border-neutral-200 bg-white p-8 transition-all hover:border-accent hover:shadow-lg dark:border-neutral-800 dark:bg-[#0a0a0a]">
-                <div className="mb-5 flex items-baseline justify-between gap-4">
-                  <div>
-                    <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-accent">
-                      {zone.englishName}
-                    </p>
-                    <h5 className="mt-2 text-lg font-semibold tracking-tight text-neutral-900 dark:text-white">
-                      {zone.name}
-                    </h5>
-                  </div>
-                  <span className="heading-display text-2xl text-neutral-300 dark:text-neutral-700">
-                    0{i + 1}
-                  </span>
-                </div>
-                <p className="mb-4 text-sm font-medium text-neutral-700 dark:text-neutral-300">
-                  {zone.tagline}
-                </p>
-                <p className="mb-5 text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">
-                  {zone.description}
-                </p>
-                <div className="flex flex-wrap gap-1.5">
-                  {zone.keywords.map((kw) => (
-                    <span
-                      key={kw}
-                      className="border border-neutral-200 px-2.5 py-1 text-[10px] tracking-wide text-neutral-500 dark:border-neutral-700 dark:text-neutral-400"
-                    >
-                      {kw}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </RevealOnScroll>
-          ))}
-        </div>
-      </div>
     </SectionWrapper>
   );
 }

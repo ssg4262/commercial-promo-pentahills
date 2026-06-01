@@ -36,26 +36,28 @@ export default function BirdEyeSection() {
       subtitle="Complex"
       className="bg-neutral-50 dark:bg-[#0f0f0f]"
     >
-      {/* Primary category tabs */}
-      <RevealOnScroll>
-        <div className="mb-4 flex flex-wrap gap-2">
-          {BIRDSEYE_CATEGORIES.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => selectCategory(cat.id)}
-              className={cn(
-                "rounded-full px-4 py-2 text-[13px] font-medium transition-colors",
-                activeCat === cat.id
-                  ? "bg-accent text-white"
-                  : "bg-white text-neutral-500 hover:bg-neutral-100 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:bg-neutral-700"
-              )}
-            >
-              {cat.label}
-              <span className="ml-1.5 text-[11px] opacity-70">{cat.tabs.length}</span>
-            </button>
-          ))}
-        </div>
-      </RevealOnScroll>
+      {/* Primary category tabs — hidden when only one category exists */}
+      {BIRDSEYE_CATEGORIES.length > 1 && (
+        <RevealOnScroll>
+          <div className="mb-4 flex flex-wrap gap-2">
+            {BIRDSEYE_CATEGORIES.map((cat) => (
+              <button
+                key={cat.id}
+                onClick={() => selectCategory(cat.id)}
+                className={cn(
+                  "rounded-full px-4 py-2 text-[13px] font-medium transition-colors",
+                  activeCat === cat.id
+                    ? "bg-accent text-white"
+                    : "bg-white text-neutral-500 hover:bg-neutral-100 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:bg-neutral-700"
+                )}
+              >
+                {cat.label}
+                <span className="ml-1.5 text-[11px] opacity-70">{cat.tabs.length}</span>
+              </button>
+            ))}
+          </div>
+        </RevealOnScroll>
+      )}
 
       {/* Secondary sub-tabs */}
       <RevealOnScroll>

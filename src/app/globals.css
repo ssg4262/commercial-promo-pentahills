@@ -13,6 +13,10 @@
   --color-cta-phone: #0A4A3A;
   --color-cta-phone-dark: #073429;
   --color-leaf: #6CBE4C;
+  /* 상가분양 섹션 강조용 — 테라코타 레드 (베로나 컨셉) */
+  --color-highlight: #B5423A;
+  --color-highlight-dark: #963328;
+  --color-highlight-light: #D8A097;
   --color-surface: #f7f7f7;
   --color-surface-dark: #111111;
   --color-muted: #666666;

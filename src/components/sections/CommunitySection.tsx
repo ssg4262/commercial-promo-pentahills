@@ -9,6 +9,7 @@ import RevealOnScroll from "@/components/common/RevealOnScroll";
 import ImageZoomModal from "@/components/common/ImageZoomModal";
 
 const TABS: { id: string; label: string; image: string }[] = [
+  { id: "community",  label: "대규모 커뮤니티",   image: "/images/overview/community-main.png" },
   { id: "facilities", label: "커뮤니티 시설",     image: "/images/community/comm-facilities.png" },
   { id: "landscape",  label: "단지 조경",         image: "/images/community/comm-landscape.png" },
   { id: "elevator",   label: "동별 4대 E/V",      image: "/images/community/comm-elevator.png" },

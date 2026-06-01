@@ -9,6 +9,9 @@ interface SectionWrapperProps {
   className?: string;
   title?: string;
   subtitle?: string;
+  /** Editorial section marker shown above the subtitle (e.g. "FEATURED · 핵심") */
+  kicker?: string;
+  titleClassName?: string;
   dark?: boolean;
 }
 
@@ -18,6 +21,8 @@ export default function SectionWrapper({
   className,
   title,
   subtitle,
+  kicker,
+  titleClassName,
   dark = false,
 }: SectionWrapperProps) {
   return (
@@ -32,15 +37,23 @@ export default function SectionWrapper({
       )}
     >
       <div className="mx-auto max-w-7xl section-padding">
-        {(title || subtitle) && (
+        {(title || subtitle || kicker) && (
           <div className="mb-10 md:mb-20">
+            {kicker && (
+              <div className="mb-5 flex items-center gap-3">
+                <span className="h-px w-7 bg-accent" />
+                <span className="text-[10px] font-semibold tracking-[0.28em] uppercase text-accent">
+                  {kicker}
+                </span>
+              </div>
+            )}
             {subtitle && (
               <span className={cn("label-caps mb-4 block", dark ? "text-neutral-400" : "text-neutral-500 dark:text-neutral-400")}>
                 {subtitle}
               </span>
             )}
             {title && (
-              <h2 className={cn("heading-display text-[35px] md:text-[45px] lg:text-[57px]", dark ? "text-white" : "text-neutral-900 dark:text-white")}>
+              <h2 className={cn("heading-display text-[35px] md:text-[45px] lg:text-[57px]", dark ? "text-white" : "text-neutral-900 dark:text-white", titleClassName)}>
                 {title}
               </h2>
             )}
