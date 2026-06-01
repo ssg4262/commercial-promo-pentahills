@@ -50,23 +50,52 @@ export default function Header() {
 
           {/* Desktop nav */}
           <nav className="hidden items-center gap-8 lg:flex">
-            {NAV_ITEMS.filter((item) => item.id !== "hero").map((item) => (
-              <button
-                key={item.id}
-                onClick={() => handleNav(item.id)}
-                className={cn(
-                  "relative text-[14px] font-semibold tracking-[0.05em] transition-colors",
-                  isScrolled || !isOverHero
-                    ? "text-neutral-500 hover:text-black"
-                    : "text-white/60 hover:text-white",
-                  activeSection === item.id && (isScrolled || !isOverHero
-                    ? "!font-bold text-accent"
-                    : "!font-bold text-white")
-                )}
-              >
-                {item.label}
-              </button>
-            ))}
+            {NAV_ITEMS.filter((item) => item.id !== "hero").map((item) => {
+              const isCommercial = item.id === "commercial";
+              const isActive = activeSection === item.id;
+              if (isCommercial) {
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => handleNav(item.id)}
+                    className={cn(
+                      "relative text-[14px] font-semibold tracking-[0.05em] transition-colors",
+                      isScrolled || !isOverHero
+                        ? "text-neutral-500 hover:text-black"
+                        : "text-white/60 hover:text-white",
+                      isActive && (isScrolled || !isOverHero
+                        ? "!font-bold text-accent"
+                        : "!font-bold text-white")
+                    )}
+                  >
+                    {item.label}
+                    <span
+                      aria-hidden
+                      className="absolute -top-2.5 -right-3 inline-flex items-center bg-accent px-1 py-px text-[8px] font-semibold uppercase tracking-[0.14em] text-white"
+                    >
+                      분양중
+                    </span>
+                  </button>
+                );
+              }
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => handleNav(item.id)}
+                  className={cn(
+                    "relative text-[14px] font-semibold tracking-[0.05em] transition-colors",
+                    isScrolled || !isOverHero
+                      ? "text-neutral-500 hover:text-black"
+                      : "text-white/60 hover:text-white",
+                    isActive && (isScrolled || !isOverHero
+                      ? "!font-bold text-accent"
+                      : "!font-bold text-white")
+                  )}
+                >
+                  {item.label}
+                </button>
+              );
+            })}
           </nav>
 
           {/* Right */}

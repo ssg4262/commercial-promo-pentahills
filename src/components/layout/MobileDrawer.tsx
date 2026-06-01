@@ -41,19 +41,44 @@ export default function MobileDrawer({ isOpen, onClose, onNavClick }: MobileDraw
             </div>
 
             <nav className="flex flex-col px-5">
-              {NAV_ITEMS.filter((i) => i.id !== "hero").map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => onNavClick(item.id)}
-                  className={`border-b border-neutral-100 py-4 text-left text-sm transition dark:border-neutral-800 ${
-                    activeSection === item.id
-                      ? "font-medium text-black dark:text-white"
-                      : "text-neutral-400 hover:text-black dark:hover:text-white"
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ))}
+              {NAV_ITEMS.filter((i) => i.id !== "hero").map((item) => {
+                const isCommercial = item.id === "commercial";
+                const isActive = activeSection === item.id;
+                if (isCommercial) {
+                  return (
+                    <button
+                      key={item.id}
+                      onClick={() => onNavClick(item.id)}
+                      className={`flex items-center gap-2 border-b border-neutral-100 py-4 text-left text-sm transition dark:border-neutral-800 ${
+                        isActive
+                          ? "font-medium text-black dark:text-white"
+                          : "text-neutral-400 hover:text-black dark:hover:text-white"
+                      }`}
+                    >
+                      <span>{item.label}</span>
+                      <span
+                        aria-hidden
+                        className="inline-flex items-center bg-accent px-1 py-px text-[8px] font-semibold uppercase tracking-[0.14em] text-white"
+                      >
+                        분양중
+                      </span>
+                    </button>
+                  );
+                }
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => onNavClick(item.id)}
+                    className={`border-b border-neutral-100 py-4 text-left text-sm transition dark:border-neutral-800 ${
+                      isActive
+                        ? "font-medium text-black dark:text-white"
+                        : "text-neutral-400 hover:text-black dark:hover:text-white"
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                );
+              })}
             </nav>
 
             <div className="mt-auto p-5">
