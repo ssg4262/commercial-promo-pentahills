@@ -131,9 +131,20 @@ body {
   to   { transform: scaleX(1); }
 }
 
+/* ── Premium status indicator (2026 minimal) ───────────── */
+/* Solid live dot with extremely soft breathing — sub-1px shift only */
+@keyframes statusBreathe {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.55; }
+}
+.status-dot {
+  animation: statusBreathe 2.4s ease-in-out infinite;
+}
+
 /* Reduced-motion safety */
 @media (prefers-reduced-motion: reduce) {
   .hero-kenburns { animation: none; }
   .cta-btn:hover { transform: none; }
+  .status-dot { animation: none; }
   html { scroll-behavior: auto; }
 }
