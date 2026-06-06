@@ -71,9 +71,9 @@ export default function Header() {
                     {item.label}
                     <span
                       aria-hidden
-                      className="absolute -top-2.5 -right-3 inline-flex items-center bg-accent px-1 py-px text-[8px] font-semibold uppercase tracking-[0.14em] text-white"
+                      className="absolute -top-2.5 -right-4 inline-flex items-center bg-accent px-1 py-px text-[8px] font-semibold uppercase tracking-[0.14em] text-white"
                     >
-                      분양중
+                      분양예정
                     </span>
                   </button>
                 );

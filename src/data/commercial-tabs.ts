@@ -92,31 +92,4 @@ export const COMMERCIAL_CATEGORIES: CommercialCategory[] = [
       },
     ],
   },
-  {
-    id: "floor",
-    label: "도면·배치",
-    tabs: [
-      {
-        id: "floor-layout",
-        label: "판매시설 배치도",
-        image: "/images/commercial/floor-layout.png",
-        description:
-          "판매시설 면적 및 지상 1층 상가 배치도 — 1단지 606실, 2단지 979실 (1·2단지 전체)",
-      },
-      {
-        id: "floor-b1",
-        label: "지하 1층 평면도",
-        image: "/images/commercial/floor-b1.png",
-        description:
-          "지하 1층 평면도 — 앵커 테넌트(영화관·미디어체험관·바운스 등) 및 판매시설 배치",
-      },
-      {
-        id: "floor-b2",
-        label: "지하 2층 평면도",
-        image: "/images/commercial/floor-b2.png",
-        description:
-          "지하 2층 평면도 — 앵커 테넌트(영화관·미디어체험관·서점·VR·바운스 등) 및 판매시설 배치",
-      },
-    ],
-  },
 ];
