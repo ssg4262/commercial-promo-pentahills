@@ -38,6 +38,13 @@ export default function Home() {
         />
         <OverviewSection />
         <CommercialSection />
+        <VideoSection
+          id="commercial-film"
+          title="수변 문화복합몰, W스퀘어 상가분양 안내"
+          subtitle="Commercial Briefing"
+          src="/videos/commercial.mp4"
+          dark
+        />
         <DividerSection
           quote="호수공원이 선사하는 낭만, 펜타힐즈 W스퀘어가 완성합니다"
         />
