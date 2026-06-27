@@ -60,7 +60,7 @@ export default function MobileDrawer({ isOpen, onClose, onNavClick }: MobileDraw
                         aria-hidden
                         className="inline-flex items-center bg-accent px-1 py-px text-[8px] font-semibold uppercase tracking-[0.14em] text-white"
                       >
-                        분양예정
+                        분양중
                       </span>
                     </button>
                   );
