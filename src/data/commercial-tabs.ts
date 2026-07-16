@@ -98,7 +98,7 @@ export const COMMERCIAL_CATEGORIES: CommercialCategory[] = [
     tabs: [
       {
         id: "floor-1f",
-        label: "지상 1층",
+        label: "호수변 1층",
         image: "/images/commercial/floor-1f.png",
         description:
           "지상 1층 평면도 — 호수변 상가 (F&B 위주 Cafe 스트리트 특화 MD)",
