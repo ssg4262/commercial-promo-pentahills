@@ -105,14 +105,14 @@ export const COMMERCIAL_CATEGORIES: CommercialCategory[] = [
       },
       {
         id: "floor-b1",
-        label: "지하 1층",
+        label: "2층",
         image: "/images/commercial/floor-b1.png",
         description:
           "지하 1층 평면도 (대로변 기준 2층) — 외식 거리·뷰티·생활 밀착형 서비스 MD",
       },
       {
         id: "floor-b2",
-        label: "지하 2층",
+        label: "1층",
         image: "/images/commercial/floor-b2.png",
         description:
           "지하 2층 평면도 (대로변 기준 1층) — 리테일 업종·킬러 브랜드·필수 근생 MD",
