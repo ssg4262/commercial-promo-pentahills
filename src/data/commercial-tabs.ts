@@ -92,4 +92,31 @@ export const COMMERCIAL_CATEGORIES: CommercialCategory[] = [
       },
     ],
   },
+  {
+    id: "floorplan",
+    label: "평면도",
+    tabs: [
+      {
+        id: "floor-1f",
+        label: "지상 1층",
+        image: "/images/commercial/floor-1f.png",
+        description:
+          "지상 1층 평면도 — 호수변 상가 (F&B 위주 Cafe 스트리트 특화 MD)",
+      },
+      {
+        id: "floor-b1",
+        label: "지하 1층",
+        image: "/images/commercial/floor-b1.png",
+        description:
+          "지하 1층 평면도 (대로변 기준 2층) — 외식 거리·뷰티·생활 밀착형 서비스 MD",
+      },
+      {
+        id: "floor-b2",
+        label: "지하 2층",
+        image: "/images/commercial/floor-b2.png",
+        description:
+          "지하 2층 평면도 (대로변 기준 1층) — 리테일 업종·킬러 브랜드·필수 근생 MD",
+      },
+    ],
+  },
 ];
