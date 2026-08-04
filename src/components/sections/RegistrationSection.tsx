@@ -11,7 +11,7 @@ import SectionWrapper from "./SectionWrapper";
 import RevealOnScroll from "@/components/common/RevealOnScroll";
 
 const GAS_ENDPOINT =
-  "https://script.google.com/macros/s/AKfycbwH699VdDNh9WwvPTNtqHtstj-MB_BDuuO3EYl3MpZEkmwPDmEMZW-QtQMdLbUiooTE/exec?project=apartment-promo";
+  "https://script.google.com/macros/s/AKfycbwH699VdDNh9WwvPTNtqHtstj-MB_BDuuO3EYl3MpZEkmwPDmEMZW-QtQMdLbUiooTE/exec?project=commercial-promo-pentahills";
 
 const schema = z.object({
   name: z.string().min(2, "이름을 2자 이상 입력해주세요"),
