@@ -38,6 +38,7 @@ export default function RegistrationSection() {
   const mutation = useMutation({
     mutationFn: async (data: FormData) => {
       const body = new globalThis.FormData();
+      body.append("project", "commercial-promo-pentahills");
       body.append("name", data.name);
       body.append("phone", data.phone);
       body.append("email", data.email || "");

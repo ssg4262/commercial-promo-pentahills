@@ -1,13 +1,13 @@
 /**
  * Google Apps Script — 관심고객 등록 시트 연동 (멀티 프로젝트)
  *
- * 스프레드시트 ID: 1HPA3ArBpQNmMhaakg22zaKcgP_EjBGFsTISfRVirfLVcQkM3CL5H_Ef-
+ * 스프레드시트 ID: 15H34WI3b9zoboSya2bs6OzYhdmlXd6KG-FNDxCxxOIw
  *
- * - bunyang 프로젝트  → 1번 시트 (getSheets()[0])
- * - apartment-promo   → 2번 시트 (getSheets()[1])
+ * 시트 이름으로 분기합니다 (인덱스 아닌 이름 기반):
+ * - project=apartment-promo → "호반써밋" 시트
+ * - 그 외                  → "기본" 시트
  *
- * 프론트에서 FormData에 project 파라미터를 보내서 분기합니다.
- * project=apartment-promo → 2번 시트, 그 외 → 1번 시트
+ * 프론트에서 FormData body에 project 파라미터를 보내서 분기합니다.
  *
  * 사용법:
  * 1. 기존 GAS 코드에 이 내용을 덮어씌우고 저장합니다.
@@ -15,6 +15,12 @@
  */
 
 var SPREADSHEET_ID = "15H34WI3b9zoboSya2bs6OzYhdmlXd6KG-FNDxCxxOIw";
+
+var SHEET_MAP = {
+  "apartment-promo": "호반써밋",
+  "commercial-promo-pentahills": "펜타힐즈",
+};
+var DEFAULT_SHEET = "기본";
 
 function doPost(e) {
   var lock = LockService.getScriptLock();
@@ -24,15 +30,14 @@ function doPost(e) {
     var ss = SpreadsheetApp.openById(SPREADSHEET_ID);
     var p = e.parameter;
 
-    // project 파라미터로 시트 분기
-    var sheetIndex = (p.project === "apartment-promo") ? 1 : 0;
-    var sheet = ss.getSheets()[sheetIndex];
+    var project = p.project || "";
+    var sheetName = SHEET_MAP[project] || DEFAULT_SHEET;
+    var sheet = ss.getSheetByName(sheetName);
 
     if (!sheet) {
-      sheet = ss.insertSheet(sheetIndex === 1 ? "apartment-promo" : "bunyang");
+      sheet = ss.insertSheet(sheetName);
     }
 
-    // 헤더가 없으면 자동 생성
     if (sheet.getLastRow() === 0) {
       sheet.appendRow(["등록일시", "이름", "연락처", "이메일"]);
     }
